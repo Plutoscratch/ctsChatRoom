@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<head>
+    <title>CTS ChatRoom | 验证页</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📖</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main_mobile.css">
+</head>
+
+//主体↓
+
+<script>
+    window.onload=function(){
+        var userAgent = navigator.userAgent;
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+        var isTablet = /iPad|Android/i.test(userAgent);
+        var isDesktop = !isMobile && !isTablet;
+        if (isDesktop) {
+            location.href = '/'
+            }
+</script>
+
+<body>
+    
+    <div class="bg">
+        <img alt="background" src="./img/bg.jpg">
+            <div class="subBox" id="text">
+                <div class="text">
+                    
+                    <br/>
+                    <h1>CTS ChatRoom  验证页</h1>
+                    <br/>
+                    <h3>这里是ChatRoom的验证页</h3>
+                    <h4>ChatRoom是一个为2021届彩田学校搭建的网站,用以毕业后交换联系方式，记录校园往事，闲聊等</h4>
+                    <h3>如果您是无意中来到这里的，请当做没看见，谢谢您的尊重</h3>
+                    <div class="cw"><h2>验证码:&emsp;<span id="checkw"/></h2></div>
+                    <br/>
+                    <h3>密码:</h3>
+                    <h3><input type="text" placeholder="请输入密码" id="pw"></h3>
+                    <br/>
+                    <button onclick="GO()">确认进入</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    var checkword = Math.floor(Math.random()*8888+1111);
+    console.log(checkword);
+    document.getElementById("checkw").innerText = checkword;
+    var ncw = (checkword+1)*2
+
+    function GO(){
+        var pw = document.getElementById("pw").value;
+        if(pw == ncw){
+            console.log('pass');
+            //密码正确
+            window.sessionStorage['Status'] = 'pass';
+            location.href = './chat.html';
+        }else if(pw == '2021'){
+            console.log('pass');
+            //特殊密码
+            window.sessionStorage['Status'] = 'pass';
+            location.href = './chat.html';
+        }else{
+            window.alert('抱歉，密码错误');
+            location.reload();
+            //密码错误则刷新网站
+        }
+    }
+    
+</script>
+
+<div class="footer"><p>冥王星 | 2023</p></div>
